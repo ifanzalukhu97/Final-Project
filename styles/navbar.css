@@ -1,0 +1,16 @@
+.navbar-custom {
+  margin: auto;
+  text-align: center;
+}
+
+.material-icons {
+  font-size: 48px;
+  line-height: 1;
+  margin: 10px;
+  color: white;
+}
+
+.material-icons:hover,
+.material-icons.active {
+  color: #ffea00;
+}

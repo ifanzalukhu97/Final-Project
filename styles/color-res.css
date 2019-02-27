@@ -1,0 +1,34 @@
+.color-primary {
+  background-color: #263238;
+}
+.color-primary-light {
+  background-color: #4f5b62;
+}
+.color-primary-dark {
+  background-color: #000a12;
+}
+.color-secondary {
+  background-color: #ffea00;
+}
+.color-secondary-light {
+  background-color: #ffff56;
+}
+.color-secondary-dark {
+  background-color: #c7b800;
+}
+
+.font-secondary-light {
+  color: #ffff56;
+}
+
+.font-secondary-dark {
+  color: #c7b800;
+}
+
+.font-secondary {
+  color: #ffea00;
+}
+
+.font-primary-light {
+  color: #4f5b62;
+}
