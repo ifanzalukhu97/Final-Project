@@ -10,6 +10,9 @@ const COLUMN_CARD_IN_ROW = 5;
 $(document).ready(() => {
   showAllCardMoviesList();
 
+  showCardMoviesParallax(1);
+  showCardMoviesParallax(2);
+
   // ====== Show Modal Detail Movie ======
   $(`.btn-detail`).each((index, btnElement) => {
     $(btnElement).on("click", () => {
@@ -51,6 +54,28 @@ let showAllCardMoviesList = () => {
     );
   });
 };
+
+// ====== Parallax Effect ======
+let showCardMoviesParallax = movieRowIndex => {
+  $(`.movies-row-${movieRowIndex} .card`).each((index, cardElement) => {
+    setTimeout(() => {
+      $(cardElement).addClass("show-card-groups-movies");
+    }, 300 * (index + 1));
+  });
+};
+
+$(window).scroll(() => {
+  let scrollCurrentPosition = $(this).scrollTop();
+
+  if (scrollCurrentPosition > $(".movies-row-2").offset().top - 100) {
+    showCardMoviesParallax(3);
+  }
+
+  if (scrollCurrentPosition > $(".movies-row-3").offset().top - 100) {
+    showCardMoviesParallax(4);
+  }
+});
+// ====== End Parallax Effect ======
 
 // ====== HTML Templating ======
 let createMovieCard = (poster_path, title, id) =>

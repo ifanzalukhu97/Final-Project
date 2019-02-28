@@ -1,0 +1,10 @@
+.card-deck .card {
+  opacity: 0;
+  transform: translate(0, -40px);
+  transition: 0.5s;
+}
+
+.card-deck .card.show-card-groups-movies {
+  opacity: 1;
+  transform: translate(0, 0);
+}
