@@ -4,7 +4,21 @@
   transition: 0.5s;
 }
 
+.card.show-card-groups-movies {
+  position: relative;
+}
+
 .card-deck .card.show-card-groups-movies {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+.card.show-card-groups-movies:hover {
+  box-shadow: 3px 2px 2px 2px rgba(44, 43, 41, 0.6);
+  margin-top: -5px;
+}
+
+.btn-detail:hover {
+  background-color: #ffea00;
+  color: black;
 }

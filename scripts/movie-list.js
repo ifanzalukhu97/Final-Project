@@ -86,7 +86,7 @@ let createMovieCard = (poster_path, title, id) =>
   />
   <div class="card-body">
     <h6 class="card-title">${title}</h6>
-    <button id="${id}" class="btn btn-block btn-sm color-secondary btn-detail" data-toggle="modal"
+    <button id="${id}" class="btn btn-block btn-sm color-primary-dark font-secondary btn-detail" data-toggle="modal"
     data-target=".bd-example-modal-lg">Detail</button>
   </div>
 </div>`;
