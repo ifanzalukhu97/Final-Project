@@ -13,6 +13,17 @@
   transform: translate(0, 0);
 }
 
+.card.show-card-groups-movies .badge-genre {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.badge-pink {
+  background-color: rgb(212, 10, 77);
+  color: white;
+}
+
 .card.show-card-groups-movies:hover {
   box-shadow: 3px 2px 2px 2px rgba(44, 43, 41, 0.6);
   margin-top: -5px;
@@ -21,4 +32,8 @@
 .btn-detail:hover {
   background-color: #ffea00;
   color: black;
+}
+
+.badge-light {
+  color: red;
 }

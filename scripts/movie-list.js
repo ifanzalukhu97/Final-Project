@@ -50,7 +50,7 @@ let showAllCardMoviesList = () => {
     }
 
     $(`.movies-row-${moviesRow}`).append(
-      createMovieCard(movie.poster_path, movie.title, movie.id)
+      createMovieCard(movie.poster_path, movie.title, movie.id, movie.genre)
     );
   });
 };
@@ -78,8 +78,21 @@ $(window).scroll(() => {
 // ====== End Parallax Effect ======
 
 // ====== HTML Templating ======
-let createMovieCard = (poster_path, title, id) =>
-  `<div class="card p-2 color-primary text-light">
+let createMovieCard = (poster_path, title, id, genre) => {
+  let badgeGenreColor;
+  if (genre == "comedy") {
+    badgeGenreColor = "badge-success";
+  } else if (genre == "action") {
+    badgeGenreColor = "badge-warning";
+  } else if (genre == "drama") {
+    badgeGenreColor = "badge-primary";
+  } else if (genre == "romance") {
+    badgeGenreColor = "badge-pink";
+  } else {
+    badgeGenreColor = "badge-light";
+  }
+
+  return `<div class="card p-2 color-primary text-light">
   <img
     src=${poster_path}
     class="card-img-top"
@@ -89,7 +102,9 @@ let createMovieCard = (poster_path, title, id) =>
     <button id="${id}" class="btn btn-block btn-sm color-primary-dark font-secondary btn-detail" data-toggle="modal"
     data-target=".bd-example-modal-lg">Detail</button>
   </div>
+  <div><span class="badge badge-genre ${badgeGenreColor}">${genre}</span></div>
 </div>`;
+};
 
 let createCardGroups = moviesRow =>
   `<div class="card-deck text-center mt-3 movies-row-${moviesRow}"></div>`;
