@@ -37,6 +37,11 @@ $(".movie-options").change(() => {
   setMoviePrice();
 });
 
+// Update total payment every ticket qty changed
+$(".ticket-movie-qty").change(() => {
+  setTotalPayment();
+});
+
 let showMovieOptions = () => {
   $(".movie-options").empty();
 
@@ -55,6 +60,17 @@ let setMoviePrice = () => {
   );
 
   $(".movie-price").val(selectedMoviePrice[0].price);
+
+  setTotalPayment();
+};
+
+let setTotalPayment = () => {
+  let ticketMovieQty = parseInt($(".ticket-movie-qty").val());
+  if (isNaN(ticketMovieQty)) {
+    ticketMovieQty = 0;
+  }
+  let selectedMoviePrice = parseInt($(".movie-price").val());
+  $(".total-payment").val(ticketMovieQty * selectedMoviePrice);
 };
 
 // ======= HTML Templating ========
