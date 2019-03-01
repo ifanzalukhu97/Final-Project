@@ -8,6 +8,9 @@ $(document).ready(() => {
   // Show options of movie which "action" genre as default
   showMovieOptions();
 
+  // show movie price depend on movie option selected
+  setMoviePrice();
+
   // Every options genre changed, update options of movie
   // Just show options movie from current selected genre
   $(".select-genre").change(() => {
@@ -23,7 +26,15 @@ $(document).ready(() => {
 
     // Show options of movie which current selected genre
     showMovieOptions();
+
+    // update movie price depend on movie option selected
+    setMoviePrice();
   });
+});
+
+// Update movie price every movie options selected
+$(".movie-options").change(() => {
+  setMoviePrice();
 });
 
 let showMovieOptions = () => {
@@ -32,6 +43,18 @@ let showMovieOptions = () => {
   movieSelectByGenre.forEach(movie => {
     $(".movie-options").append(createOption(movie.title));
   });
+};
+
+let setMoviePrice = () => {
+  let movieTitleOptionSelected = $(".movie-options")
+    .find(":selected")
+    .text();
+
+  let selectedMoviePrice = movieSelectByGenre.filter(
+    movie => movie.title == movieTitleOptionSelected
+  );
+
+  $(".movie-price").val(selectedMoviePrice[0].price);
 };
 
 // ======= HTML Templating ========
