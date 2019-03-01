@@ -100,7 +100,7 @@ let createMovieCard = (poster_path, title, id, genre) => {
   <div class="card-body">
     <h6 class="card-title">${title}</h6>
     <button id="${id}" class="btn btn-block btn-sm color-primary-dark font-secondary btn-detail" data-toggle="modal"
-    data-target=".bd-example-modal-lg">Detail</button>
+    data-target=".detail-movie-modal">Detail</button>
   </div>
   <div><span class="badge badge-genre ${badgeGenreColor}">${genre}</span></div>
 </div>`;
@@ -114,7 +114,7 @@ let createModalDetailMovie = (
   title,
   overview,
   release_date
-) => `<div class="modal fade bd-example-modal-lg" tabindex="-1"
+) => `<div class="modal fade detail-movie-modal" tabindex="-1"
   role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl color-primary-light p-2">
     <div class="modal-content">

@@ -3,14 +3,14 @@
   text-align: center;
 }
 
-.material-icons {
+.navbar-icons {
   font-size: 48px;
   line-height: 1;
   margin: 10px;
   color: white;
 }
 
-.material-icons:hover,
-.material-icons.active {
+.navbar-icons:hover,
+.navbar-icons.active {
   color: #ffea00;
 }
