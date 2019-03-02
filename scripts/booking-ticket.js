@@ -117,13 +117,19 @@ let createOption = movieTitle => {
 };
 
 let createFormGroup = (label, value) => {
+  let visibilty = "readonly";
+  if (label == "Username" || label == "Email") {
+    visibilty = `placeholder = ${label} required`;
+  }
+
   let formGroup = `<div class="form-group row">
   <label class="col-sm-4 col-form-label">
     ${label}
   </label>
   <div class="col-sm-8">
     <input
-      readonly
+      name=${label}
+      ${visibilty}
       class="form-control-plaintext text-white"
       value="${value}"
     />
