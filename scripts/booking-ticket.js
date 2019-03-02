@@ -6,6 +6,14 @@ let movieSelectByGenre = db_movies.filter(movie => movie.genre == "action");
 
 let detailsBookingTicket = {};
 
+$(window).on("load", () => {
+  $(`.form-group`).each((index, cardElement) => {
+    setTimeout(() => {
+      $(cardElement).addClass("form-group-show");
+    }, 300 * (index + 1));
+  });
+});
+
 $(document).ready(() => {
   // Show options of movie which "action" genre as default
   showMovieOptions();
@@ -31,6 +39,14 @@ $(document).ready(() => {
 
     // update movie price depend on movie option selected
     setMoviePrice();
+
+    $(window).on("load", () => {
+      $(`.booking-group-hidden`).each((index, cardElement) => {
+        setTimeout(() => {
+          $(cardElement).addClass("form-group-show");
+        }, 300 * (index + 1));
+      });
+    });
   });
 });
 

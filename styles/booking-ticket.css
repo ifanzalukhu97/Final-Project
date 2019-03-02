@@ -5,3 +5,14 @@
 .form-ticket-icon .ticket-icon {
   color: #ffea00;
 }
+
+.booking-group-hidden {
+  opacity: 0;
+  transform: translate(0px, -15px) rotate(-5deg) scale(1.6);
+  transition: 1s;
+}
+
+.form-group-show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
