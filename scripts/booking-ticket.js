@@ -7,11 +7,8 @@ let movieSelectByGenre = db_movies.filter(movie => movie.genre == "action");
 let detailsBookingTicket = {};
 
 $(window).on("load", () => {
-  $(`.form-group`).each((index, cardElement) => {
-    setTimeout(() => {
-      $(cardElement).addClass("form-group-show");
-    }, 300 * (index + 1));
-  });
+  // Show form fields with animation
+  animateFormFields();
 });
 
 $(document).ready(() => {
@@ -39,55 +36,45 @@ $(document).ready(() => {
 
     // update movie price depend on movie option selected
     setMoviePrice();
+  });
+  
+  // Update movie price every movie options selected
+  $(".movie-options").change(() => {
+    setMoviePrice();
+  });
 
-    $(window).on("load", () => {
-      $(`.booking-group-hidden`).each((index, cardElement) => {
-        setTimeout(() => {
-          $(cardElement).addClass("form-group-show");
-        }, 300 * (index + 1));
-      });
-    });
+  // Update total payment every ticket qty changed
+  $(".ticket-movie-qty").change(() => {
+    setTotalPayment();
+  });
+
+  // Handle booking button click
+  $(".btn-booking-ticket").click(() => {
+    getDetailBookingTicket();
+    updateModalContent();
   });
 });
 
-// Update movie price every movie options selected
-$(".movie-options").change(() => {
-  setMoviePrice();
-});
+// Animate form fields on page load
+function animateFormFields() {
+  $(`.booking-group-hidden`).each((index, element) => {
+    setTimeout(() => {
+      $(element).addClass("form-group-show");
+    }, 200 * (index + 1));
+  });
+}
 
-// Update total payment every ticket qty changed
-$(".ticket-movie-qty").change(() => {
-  setTotalPayment();
-});
-
-// Update total payment every ticket qty changed
-$(".ticket-movie-qty").change(() => {
-  setTotalPayment();
-});
-
-$(".btn-booking-ticket").click(() => {
-  getDetailBookingTicket();
-
-  $(".modal-detail-ticket").empty();
-
-  createFormGroup("Username", detailsBookingTicket.username);
-  createFormGroup("Email", detailsBookingTicket.email);
-  createFormGroup("Price", detailsBookingTicket.price);
-  createFormGroup("Qty", detailsBookingTicket.qty);
-  createFormGroup("Total", detailsBookingTicket.total_payment);
-
-  $(".modal-detail-poster").attr("src", detailsBookingTicket.poster_path);
-});
-
-let showMovieOptions = () => {
+// Show movie options based on selected genre
+function showMovieOptions() {
   $(".movie-options").empty();
 
   movieSelectByGenre.forEach(movie => {
     $(".movie-options").append(createOption(movie.title));
   });
-};
+}
 
-let setMoviePrice = () => {
+// Set movie price based on selected movie
+function setMoviePrice() {
   let movieTitleOptionSelected = $(".movie-options")
     .find(":selected")
     .text();
@@ -96,21 +83,26 @@ let setMoviePrice = () => {
     movie => movie.title == movieTitleOptionSelected
   );
 
-  $(".movie-price").val(selectedMoviePrice[0].price);
-
-  setTotalPayment();
-};
-
-let setTotalPayment = () => {
-  let ticketMovieQty = parseInt($(".ticket-movie-qty").val());
-  if (isNaN(ticketMovieQty)) {
-    ticketMovieQty = 0;
+  if (selectedMoviePrice && selectedMoviePrice.length > 0) {
+    $(".movie-price").val(selectedMoviePrice[0].price);
+    setTotalPayment();
   }
+}
+
+// Calculate and set total payment
+function setTotalPayment() {
+  let ticketMovieQty = parseInt($(".ticket-movie-qty").val());
+  if (isNaN(ticketMovieQty) || ticketMovieQty < 1) {
+    ticketMovieQty = 1;
+    $(".ticket-movie-qty").val(1);
+  }
+  
   let selectedMoviePrice = parseInt($(".movie-price").val());
   $(".total-payment").val(ticketMovieQty * selectedMoviePrice);
-};
+}
 
-let getDetailBookingTicket = () => {
+// Get booking details for modal
+function getDetailBookingTicket() {
   let movieTitleSelected = $(".movie-options")
     .find(":selected")
     .val();
@@ -119,39 +111,68 @@ let getDetailBookingTicket = () => {
     movie => movie.title == movieTitleSelected
   );
 
-  detailsBookingTicket.username = $(".username").val();
-  detailsBookingTicket.email = $(".email").val();
-  detailsBookingTicket.price = movieSelected[0].price;
-  detailsBookingTicket.qty = $(".ticket-movie-qty").val();
-  detailsBookingTicket.total_payment = $(".total-payment").val();
-  detailsBookingTicket.poster_path = movieSelected[0].poster_path;
-};
+  if (movieSelected && movieSelected.length > 0) {
+    detailsBookingTicket.username = $(".username").val();
+    detailsBookingTicket.email = $(".email").val();
+    detailsBookingTicket.price = movieSelected[0].price;
+    detailsBookingTicket.qty = $(".ticket-movie-qty").val();
+    detailsBookingTicket.total_payment = $(".total-payment").val();
+    detailsBookingTicket.poster_path = movieSelected[0].poster_path;
+    detailsBookingTicket.title = movieSelected[0].title;
+  }
+}
+
+// Update modal content with booking details
+function updateModalContent() {
+  $(".modal-detail-ticket").empty();
+  
+  if (detailsBookingTicket.poster_path) {
+    $(".modal-detail-poster").attr("src", detailsBookingTicket.poster_path);
+    
+    // Create form fields in modal
+    createTicketFormGroup("Movie", detailsBookingTicket.title);
+    createTicketFormGroup("Username", detailsBookingTicket.username);
+    createTicketFormGroup("Email", detailsBookingTicket.email);
+    createTicketFormGroup("Price", formatCurrency(detailsBookingTicket.price));
+    createTicketFormGroup("Quantity", detailsBookingTicket.qty);
+    createTicketFormGroup("Total", formatCurrency(detailsBookingTicket.total_payment));
+  }
+}
+
+// Format currency for display
+function formatCurrency(value) {
+  return "Rp " + parseInt(value).toLocaleString('id-ID');
+}
 
 // ======= HTML Templating ========
-let createOption = movieTitle => {
+function createOption(movieTitle) {
   return `<option>${movieTitle}</option>`;
-};
+}
 
-let createFormGroup = (label, value) => {
-  let visibilty = "readonly";
-  if (label == "Username" || label == "Email") {
-    visibilty = `placeholder = ${label} required`;
+function createTicketFormGroup(label, value) {
+  let inputType = "text";
+  let readonlyAttr = "readonly";
+  let inputValue = value || "";
+  
+  // Make username and email editable in the modal
+  if (label === "Username" || label === "Email") {
+    readonlyAttr = "required";
+    if (label === "Email") inputType = "email";
   }
 
-  let formGroup = `<div class="form-group row">
-  <label class="col-sm-4 col-form-label">
-    ${label}
-  </label>
-  <div class="col-sm-8">
-    <input
-      name=${label}
-      ${visibilty}
-      class="form-control-plaintext text-white"
-      value="${value}"
-    />
-  </div>
-</div>`;
+  let formGroup = `
+  <div class="ticket-form-group">
+    <label for="ticket-${label.toLowerCase()}">${label}</label>
+    <input 
+      type="${inputType}"
+      id="ticket-${label.toLowerCase()}"
+      name="${label}"
+      class="ticket-form-control"
+      value="${inputValue}"
+      ${readonlyAttr}
+    >
+  </div>`;
 
   $(".modal-detail-ticket").append(formGroup);
-};
+}
 // ======= End HTML Templating ========

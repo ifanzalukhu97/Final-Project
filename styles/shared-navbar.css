@@ -1,0 +1,75 @@
+/* Shared Navigation Bar Styles */
+.navbar-custom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  background-color: rgba(10, 31, 10, 0.8);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure container is consistent with Bootstrap defaults */
+.navbar-custom .container-fluid {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Ensure row takes full width */
+.navbar-custom .row {
+  width: 100%;
+  margin: 0;
+  display: flex;
+}
+
+/* Ensure columns are equal width */
+.navbar-custom .col-4 {
+  flex: 1;
+  padding: 0;
+  text-align: center;
+}
+
+.navbar-icons {
+  font-size: 28px;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.navbar-icons:hover,
+.navbar-icons.active {
+  color: var(--secondary);
+  transform: translateY(-5px);
+  text-shadow: 0 0 10px rgba(0, 204, 0, 0.7);
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 3px;
+  font-weight: 500;
+  color: var(--text-light);
+  opacity: 0.8;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 575px) {
+  .navbar-icons {
+    font-size: 24px;
+  }
+  
+  .nav-label {
+    font-size: 0.7rem;
+  }
+  
+  .navbar-custom {
+    padding: 8px 0;
+  }
+}

@@ -2,80 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CineVerse | Movie Collection</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles/color-res.css" />
     <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/shared-navbar.css" />
     <link rel="stylesheet" href="../styles/movie-list.css" />
-
-    <title>Movies</title>
   </head>
-  <body class="color-primary-light">
+  
+  <body class="color-primary-dark">
     <!-- ======= Navbar ====== -->
-    <div class="navbar-custom color-primary-dark">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <a href="../index.html">
-              <i class="material-icons navbar-icons">
-                home
-              </i>
-            </a>
-          </div>
-          <div class="col">
-            <a href="">
-              <i class="material-icons navbar-icons active">
-                movie_creation
-              </i>
-            </a>
-          </div>
-          <div class="col">
-            <a href="./booking-ticket.html">
-              <i class="material-icons navbar-icons">
-                today
-              </i>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div id="navbar-container">
+      <!-- Navigation will be injected here by navbar.js -->
     </div>
     <!-- ====== End of Navbar ====== -->
 
-    <!-- ====== Card List Movies ====== -->
-    <div class="container-fluid movies-container">
-      <div class="card-deck text-center mt-3 movies-row-1"></div>
+    <!-- ====== Movie List Header ====== -->
+    <div class="container">
+      <div class="movie-header">
+        <h2 class="font-secondary">Movie Collection</h2>
+        <p class="text-light">Browse our selection of the latest and greatest films</p>
+      </div>
     </div>
-    <!-- ====== End Card List Movies ====== -->
+    
+    <!-- ====== Movies Grid ====== -->
+    <div class="container-fluid movies-container">
+      <div class="movies-grid movies-row-1">
+        <!-- Movies will be dynamically inserted here -->
+      </div>
+    </div>
+    <!-- ====== End Movies Grid ====== -->
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Scripts -->
     <script src="../scripts/jquery-3.3.1.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-
+      crossorigin="anonymous"></script>
+    <script src="../components/navbar.js"></script>
     <script src="../db/dbMovies.js"></script>
     <script src="../scripts/movie-list.js"></script>
   </body>
