@@ -30,8 +30,8 @@
 }
 
 .btn-detail:hover {
-  background-color: #ffea00;
-  color: black;
+  background-color: var(--secondary);
+  color: var(--text-dark);
 }
 
 .badge-light {

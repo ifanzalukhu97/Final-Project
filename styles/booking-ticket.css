@@ -1,9 +1,9 @@
 .form-ticket-icon {
-  background-color: #263238;
+  background-color: var(--primary);
 }
 
 .form-ticket-icon .ticket-icon {
-  color: #ffea00;
+  color: var(--secondary);
 }
 
 .booking-group-hidden {

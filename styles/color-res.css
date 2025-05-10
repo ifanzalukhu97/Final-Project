@@ -1,34 +1,61 @@
+/* Dark Green and Black Color Scheme */
+:root {
+  --primary-dark: #0a1f0a;     /* Very dark green, almost black */
+  --primary: #1a3a1a;          /* Dark green */
+  --primary-light: #2d5c2d;    /* Medium dark green */
+  --secondary-dark: #003300;   /* Dark forest green */
+  --secondary: #00cc00;        /* Bright green */
+  --secondary-light: #33ff33;  /* Light green */
+  --text-light: #e0ffe0;       /* Light green text */
+  --text-dark: #121212;        /* Almost black text */
+  --accent: #00ff00;           /* Bright accent green */
+}
+
+/* Background Colors */
 .color-primary {
-  background-color: #263238;
+  background-color: var(--primary);
 }
 .color-primary-light {
-  background-color: #4f5b62;
+  background-color: var(--primary-light);
 }
 .color-primary-dark {
-  background-color: #000a12;
+  background-color: var(--primary-dark);
 }
 .color-secondary {
-  background-color: #ffea00;
+  background-color: var(--secondary);
 }
 .color-secondary-light {
-  background-color: #ffff56;
+  background-color: var(--secondary-light);
 }
 .color-secondary-dark {
-  background-color: #c7b800;
+  background-color: var(--secondary-dark);
 }
 
+/* Text Colors */
 .font-secondary-light {
-  color: #ffff56;
+  color: var(--secondary-light);
 }
-
 .font-secondary-dark {
-  color: #c7b800;
+  color: var(--secondary-dark);
 }
-
 .font-secondary {
-  color: #ffea00;
+  color: var(--secondary);
 }
-
 .font-primary-light {
-  color: #4f5b62;
+  color: var(--primary-light);
+}
+.font-primary {
+  color: var(--primary);
+}
+.font-primary-dark {
+  color: var(--primary-dark);
+}
+.font-light {
+  color: var(--text-light);
+}
+.font-dark {
+  color: var(--text-dark);
+}
+.font-accent {
+  color: var(--accent);
 }

@@ -12,8 +12,8 @@
 
 .navbar-icons:hover,
 .navbar-icons.active {
-  color: #ffea00;
+  color: var(--secondary);
   transform: rotate(-5deg) scale(1.2);
   transition: 0.5s;
-  text-shadow: 3px 3px #c7b800;
+  text-shadow: 3px 3px var(--secondary-dark);
 }
