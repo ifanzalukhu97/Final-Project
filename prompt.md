@@ -31,4 +31,4 @@ Here is the overview expected result :
 - and variable names are meaningful and easy to understand,
 - security aspect
 
-Your review should be clear, helpful, and easy to follow—aim to improve quality while supporting the team’s growth.
+Your review should be clear, helpful, and easy to follow—aim to improve quality while supporting the team’s growth. Also, make sure to only review code that has changed from the current branch to the target branch; don’t read all files (all lines), just focus on the ones with changes.
